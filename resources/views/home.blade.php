@@ -9,7 +9,7 @@
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-  <nav class="navbar  navbar-dark navbar-expand-lg bg-primary">
+  <nav class="navbar  navbar-dark navbar-expand-lg bg-primary  ">
     <div class="container flex justify-content-between">
       <a class="navbar-link" href="{{ route('home') }}">
         <img  class="h-32px"  src="{{ url('assets/images/image 1.png')}}" alt="Laracus Logo">
@@ -48,11 +48,56 @@
                 <a class="btn-primary-white" href="#">Singn Up</a>
             </li>
         </ul>
-
-
       </div>
     </div>
   </nav>
+  <section class="container hero" >
+    <div class="row align-items-center h-100" >
+        <div class="col-12 col-lg-6   ">
+            <h1 class="text-bold" >The Laravel</br> comunity Developer </h1>
+            <p class="mb-4" >Empowering the laravel comunity to connect,share and learn</p>
+            <a href="#" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
+            <a href="#" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
+        </div>
+        <div class="col-12 col-lg-6  h-315  order-first order-lg-last mb-3 mb-lg-0 " >
+            <img class="hero-image float-lg-end"  src="{{ url('assets/images/Mask group.png') }}" alt="">
+        </div>
+    </div>
+  </section>
+  <section class="container min-h-372px" >
+    <div class="row">
+
+        <div class="col-12 col-lg-4  text-center">
+            <img class="promote-icon mb-2" src="{{ url('assets/images/discussions.png') }}" alt="Discussions">
+            <h2>Discussions</h2>
+            <p class="fs-3" >51.875</p>
+        </div>
+
+        <div class="col-12 col-lg-4  text-center">
+            <img class="promote-icon mb-2" src="{{ url('assets/images/answers.png') }}" alt="Discussions">
+            <h2>Answers</h2>
+            <p class="fs-3" >121.984</p>
+        </div>
+
+        <div class="col-12 col-lg-4  text-center">
+            <img class="promote-icon mb-2" src="{{ url('assets/images/users.png') }}" alt="Discussions">
+            <h2>Users</h2>
+            <p class="fs-3" >11.675</p>
+        </div>
+    </div>
+  </section>
+  <section class="bg-gray" >
+    <div class="container  py-80px">
+        <h2 class="text-center" >Help Others</h2>
+        <div class="row">
+            <div class="col-12 col-g-4 mb-3 ">
+
+            </div>
+        </div>
+    </div>
+  </section>
+
+
   <script
   src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </body>
