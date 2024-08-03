@@ -56,7 +56,7 @@
   <section class="container hero" >
     <div class="row align-items-center h-100" >
         <div class="col-12 col-lg-6   ">
-            <h1 class="text-bold" >The Laravel</br> comunity Developer </h1>
+            <h1 class="fw-bold" >The Laravel</br> comunity Developer </h1>
             <p class="mb-4" >Empowering the laravel comunity to connect,share and learn</p>
             <a href="#" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
             <a href="#" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
@@ -90,7 +90,7 @@
   </section>
   <section class="bg-gray">
     <div class="container py-80px">
-      <h2 class="text-center mb-5">Help Others</h2>
+      <h2 class="text-center mb-5  fw-bold ">Help Others</h2>
       <div class="row">
         <div class="col-12 col-lg-4 mb-3">
           <div class="card">
@@ -179,6 +179,46 @@
       </div>
     </div>
   </section>
+  <section class="container  min-h-372px d-flex  flex-column align-items-center justify-content-center"  >
+    <h2 class="fw-bold" >Ready to contribute</h2>
+    <p class="mb-4" >Want to make a good impact</p>
+    <div class="text-center" >
+      <a href="#" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
+      <a href="#" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
+    </div>
+  </section>
+
+  <footer class="py-80px" >
+    <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+            <img src="{{ url('assets/images/image 3.png') }}" alt="" class="mb-4" >
+            <p class="text-white" >Empowering the Laravel community <br/>
+              to connect, share and learn.</p>
+          </div>
+          <div class="col-12 col-lg-6 me-auto" >
+                <div class="d-flex flex-column flex-lg-row justify-content-end " >
+                       <div class="d-flex  flex-column me-140px  mb-3  mb-lg-0">
+                            <p class="fw-bold fs-5 text-white text-nowrap ">
+                                Contact us
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="text-white"><a href="mailto:hi@laracuss.com">hi@laracuss.com</a></li>
+                              </ul>
+                       </div>
+                       <div class="d-flex flex-column" >
+                            <p class="fw-bold fs-5 text-white">Links</p>
+                            <ul class="list-unstyled">
+                                <li class="text-white mb-2"><a href="#">Home</a></li>
+                                <li class="text-white"><a href="#">Discussions</a></li>
+                                <li class="text-white"><a href="#">About Us</a></li>
+                            </ul>
+                       </div>
+                </div>
+          </div>
+        </div>
+    </div>
+  </footer>
 
 
   <script
