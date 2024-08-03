@@ -115,6 +115,42 @@
 }
 
 .py-80px{
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 24px;
+    width:  fit-content ;
+}
+
+
+ .card a {
+    text-decoration: none !important; /* Ensure no underline on links */
+    color: inherit !important; /* Ensure the link color inherits */
+}
+
+
+.text-bg-light {
+    &:hover{
+        color:  $primary !important;
+    }
+}
+
+.avatar-sm-wrapper {
+    height: 18px;
+    width: 18px;
+}
+
+.avatar{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.fs-12px {
+    font-size: 12px;
 }

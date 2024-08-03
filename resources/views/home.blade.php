@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
     <title>Laravel</title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
@@ -86,14 +88,95 @@
         </div>
     </div>
   </section>
-  <section class="bg-gray" >
-    <div class="container  py-80px">
-        <h2 class="text-center" >Help Others</h2>
-        <div class="row">
-            <div class="col-12 col-g-4 mb-3 ">
-
+  <section class="bg-gray">
+    <div class="container py-80px">
+      <h2 class="text-center mb-5">Help Others</h2>
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-3">
+          <div class="card">
+            <a href="#">
+              <h3>How to add a custom validation in laravel?</h3>
+            </a>
+            <div>
+              <p class="mb-5">
+                I am working on a blogging application in Laravel 8. There are 4 user roles, among which, the "...
+              </p>
+              <div class="row">
+                <div class="col me-1 me-lg-2">
+                  <a href="#"><span class="badge rounded-pill text-bg-light">Eloquent</span></a>
+                </div>
+                <div class="col-5 col-lg-7">
+                  <div class="avatar-sm-wrapper d-inline-block">
+                    <a href="#" class="me-1">
+                      <img src="{{ url('assets/images/Ellipse 2.png') }}" class="avatar rounded-circle" alt="">
+                    </a>
+                  </div>
+                  <span class="fs-12px">
+                    <a href="#" class="me-1 fw-bold">Iklil</a>
+                    <span class="color-gray">7 hours ago</span>
+                  </span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-12 col-lg-4 mb-3">
+          <div class="card">
+            <a href="#">
+              <h3>How to add a custom validation in laravel?</h3>
+            </a>
+            <div>
+              <p class="mb-5">
+                I am working on a blogging application in Laravel 8. There are 4 user roles, among which, the "...
+              </p>
+              <div class="row">
+                <div class="col me-1 me-lg-2">
+                  <a href="#"><span class="badge rounded-pill text-bg-light">Eloquent</span></a>
+                </div>
+                <div class="col-5 col-lg-7">
+                  <div class="avatar-sm-wrapper d-inline-block">
+                    <a href="#" class="me-1">
+                      <img src="{{ url('assets/images/Ellipse 2.png') }}" class="avatar rounded-circle" alt="">
+                    </a>
+                  </div>
+                  <span class="fs-12px">
+                    <a href="#" class="me-1 fw-bold">Iklil</a>
+                    <span class="color-gray">7 hours ago</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 mb-3">
+          <div class="card">
+            <a href="#">
+              <h3>How to add a custom validation in laravel?</h3>
+            </a>
+            <div>
+              <p class="mb-5">
+                I am working on a blogging application in Laravel 8. There are 4 user roles, among which, the "...
+              </p>
+              <div class="row">
+                <div class="col me-1 me-lg-2">
+                  <a href="#"><span class="badge rounded-pill text-bg-light">Eloquent</span></a>
+                </div>
+                <div class="col-5 col-lg-7">
+                  <div class="avatar-sm-wrapper d-inline-block">
+                    <a href="#" class="me-1">
+                      <img src="{{ url('assets/images/Ellipse 2.png') }}" class="avatar rounded-circle" alt="">
+                    </a>
+                  </div>
+                  <span class="fs-12px">
+                    <a href="#" class="me-1 fw-bold">Iklil</a>
+                    <span class="color-gray">7 hours ago</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
