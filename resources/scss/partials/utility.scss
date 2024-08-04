@@ -133,7 +133,10 @@
     color: inherit !important; /* Ensure the link color inherits */
 }
 
-
+.color-gray {
+    color: gray;
+    font-size: 15px;
+}
 
 .text-bg-light {
     &:hover{

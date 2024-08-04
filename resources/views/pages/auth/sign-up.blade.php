@@ -6,7 +6,7 @@
             <div class="row pt-5  justify-content-center">
                 <div class="col-12 col-lg-6 my-auto mb-5 mb-lg-auto me-0 ">
                     <div class="d-none d-lg-block ">
-                        <h2 class="fw-bold" >The laracus community</h2>
+                        <h2 class="fw-bold" >The Laracus community</h2>
                         <p>
                             <ul>
                                 <li>Stuck? Ask in the Discussions</li>
