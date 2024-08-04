@@ -2,7 +2,7 @@
 
 @section('body')
     <section class="bg-gray  vh-100" >
-        <div class="container">
+        <div class="container h-100">
             <div class="row pt-5  justify-content-center">
                 <div class="col-12 col-lg-6 my-auto mb-5 mb-lg-auto me-0 ">
                     <div class="d-none d-lg-block ">
@@ -23,7 +23,7 @@
                     <a href="#" class="nav-link mb-5 text-center">
                         <img src="{{ url('assets/images/image 3.png') }}" alt="laracus logo" class="h-32px">
                     </a>
-                    <div class="card mb-5">
+                    <div class="card mb-5 mx-auto ">
                         <form action="#">
                             <div class="mb-3" >
                                 <label for="email" class="form-label">Email address</label>
