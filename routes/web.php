@@ -42,3 +42,7 @@ Route::get('discussions/create', function () {
 Route::get('answer/1', function () {
     return view('pages.answer.form');
 })-> name('answer.edit');
+
+Route::get('users', function () {
+    return view('pages.users.show');
+})-> name('users.show');
