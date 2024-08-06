@@ -6,8 +6,8 @@
             <div class="col-12 col-lg-6   ">
                 <h1 class="fw-bold" >The Laravel</br> comunity Developer </h1>
                 <p class="mb-4" >Empowering the laravel comunity to connect,share and learn</p>
-                <a href="#" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
-                <a href="#" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
+                <a href="{{ route('auth.sign-up.show') }}" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
+                <a href="{{ route('discussions.index') }}" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
             </div>
             <div class="col-12 col-lg-6  h-315  order-first order-lg-last mb-3 mb-lg-0 " >
                 <img class="hero-image float-lg-end"  src="{{ url('assets/images/Mask group.png') }}" alt="">
@@ -131,8 +131,8 @@
         <h2 class="fw-bold" >Ready to contribute</h2>
         <p class="mb-4" >Want to make a good impact</p>
         <div class="text-center" >
-        <a href="#" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
-        <a href="#" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
+        <a href="{{ route('auth.sign-up.show') }}" class="btn-primary me-2  mb-2 mb-lg-0    " >Sign Up</a>
+        <a href="{{ route('discussions.index') }}" class="  btn-secondary me-2 mb-2 mb-lg-0"  >Join Discussions</a>
         </div>
     </section>
     @endsection
