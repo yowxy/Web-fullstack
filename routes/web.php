@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,13 @@ Route::get('/', function () {
 })-> name('home');
 
 
-Route::get('login', function () {
-    return view('pages.auth.login');
-})->name('auth.login.show')   ;
+// pake  \\ ya bukan pake // kalo mau pke Controllers
+
+Route::namespace('App\Http\Controllers\Auth')->group(function(){
+    Route::get('login', 'LoginController@show')->name('auth.login.show');
+    Route::post('login', 'LoginController@login')->name('auth.login.login');
+});
+
 
 Route::get('sign-up', function () {
     return view('pages.auth.sign-up');
