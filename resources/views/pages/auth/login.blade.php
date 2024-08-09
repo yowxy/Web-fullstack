@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="text-center">
-                            Dont have a accout  ? <a href="#" class="text-underline  text-black" >Singn Up</a>
+                            Dont have a accout  ? <a href=" {{ route('auth.sign-up.show') }} "class="text-underline  text-black" >Singn Up</a>
                         </div>
                     </div>
                 </div>
