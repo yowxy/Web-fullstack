@@ -24,26 +24,45 @@
                         <img src="{{ url('assets/images/image 3.png') }}" alt="laracus logo" class="h-32px">
                     </a>
                     <div class="card mb-5 mx-auto ">
-                        <form action="#">
+                        <form action="{{ route('auth.sign-up.sign-up') }}" method="POST" >
+                            @csrf
                             <div class="mb-3" >
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="off"  autofocus >
+                                <input type="email" class="form-control  @error ('email') is-invalid  @enderror "  id="email" placeholder="name@example.com" autocomplete="off"  autofocus
+                                name="email"  value="{{ old('email') }}"  >
+                                @error('email')
+                                    <div class="invalid-feedback" >
+                                           {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3" >
                                 <label for="password" class="form-label">password</label>
                                 <div class="input-group">
-                                    <input type="password" class="form-control  border-end-0  pe-0 rounded-0  rounded-start "
+                                    <input type="password" class="form-control  border-end-0  pe-0 rounded-0  rounded-start   @error('password')  is-invalid  @enderror "
                                     id="password" name="password">
-                                    <span class="input-group-text  bg-white border-start-0 pe-auto ">
+                                    <span class="input-group-text  bg-white border-start-0 pe-auto
+                                     @error('email')  border-danger rounded-end   @enderror ">
                                         <a href="javascript:;" id="password-toogle" >
                                             <img src="{{ url('assets/images/eye-slash.png') }}" alt="passworf-toogle" id="password-toogle-img" >
                                         </a>
                                     </span>
+                                    @error('password')
+                                        <div class="invalid-feedback" >
+                                            {{ $message }}
+                                        </div>
+                                   @enderror
                                   </div>
                             </div>
                             <div class="mb-3" >
                                 <label for="username" class="form-label">username</label>
-                                <input type="text" class="form-control" id="username"  autocomplete="off">
+                                <input type="text" class="form-control @error ('username') is-invalid  @enderror " id="username"  autocomplete="off"
+                                name="username" value="{{ old('username') }}"  >
+                                @error('username')
+                                <div class="invalid-feedback" >
+                                    {{ $message }}
+                                </div>
+                           @enderror
                             </div>
                             <div class="mb-3  d-grid" >
                                 <button type="submit" class="btn-primary  rounded-2 fs-5 " >Sign up</button>
@@ -51,7 +70,7 @@
                         </form>
                     </div>
                     <div  class="text-center foot " >
-                        Already have an account ? <a href="" class="text-underline text-black" ><u>Log in</u></a>
+                        Already have an account ? <a href="{{ route('auth.login.show') }}" class="text-underline text-black" ><u>Log in</u></a>
                     </div>
                 </div>
             </div>
