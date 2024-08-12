@@ -23,9 +23,11 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::namespace('App\Http\Controller')->group(function(){
-    Route::resource('discussions', DiscussionController::class)
-    ->only(['index','show']);
+Route::namespace('App\Http\Controllers')->group(function() {
+    Route::resource('discussions', DiscussionController::class)->only(['index', 'show']);
+
+    Route::get('discussions/categories/{category}', 'CategoryController@show')
+        ->name('discussions.categories.show');
 });
 
 

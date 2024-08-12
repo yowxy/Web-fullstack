@@ -8,6 +8,7 @@
                 <h2 class="me-4 mb-0 fw-bold " >
                     @if (isset($search))
                         {{ "Search Result for \"$search \""}} @else {{ 'All Discussions' }}
+                        <span>{{ isset($withCategory) ? ' About ' . $withCategory->name : '' }}</span>
                     @endif
                 </h2>
                 <div>
@@ -39,10 +40,10 @@
                             <a href="{{ route('discussions.show' , $discussion->slug) }}">
                                 <h3 class="fw-bold">{{ $discussion->title }}</h3>
                             </a>
-                            <p>{{ $discussion->content_preview }}</p>
+                            <p>{!! $discussion->content_preview !!}</p>
                             <div class="row">
                                 <div class="col me-1 me-lg-2  ">
-                                    <a href="#">
+                                    <a href="{{ route('discussions.categories.show', $discussion->category->slug) }}">
                                         <span class="badge  rounded-pill text-bg-light " >{{ $discussion->category->name }}</span>
                                     </a>
                                 </div>
@@ -69,18 +70,21 @@
                    </div>
                 </div>
                 @empty
-                    <div class="card card-discussions" >
+                    <div class="card card-discussions w-100" >
                         Currently no discussion yet
                     </div>
                 @endforelse
+
+              {{ $discussions->links() }}
+
             </div>
             <div class="col-12  col-lg-4 ">
                 <div class="card  w-100">
                     <h3 class="fw-bold" >All Categories</h3>
                     <div>
-                        @foreach ($categories as $Category)
-                        <a href="#">
-                            <span class="badge  rounded-pill text-bg-light " >{{ $Category->name }}</span>
+                        @foreach ($categories as $category)
+                        <a href="{{ route('discussions.categories.show', $category->slug)  }}">
+                            <span class="badge  rounded-pill text-bg-light " >{{ $category->name }}</span>
                         </a>
                         @endforeach
                     </div>

@@ -26,10 +26,10 @@ class DiscussionController extends Controller
         }
 
 
-
-        return response()->view('pages.discussions.index    ', [
+        return response()->view('pages.discussions.index', [
             'discussions' => $discussions->orderBy('created_at', 'desc')
-                ->paginate(10)->withQueryString(),
+                                         ->paginate(10)
+                                         ->withQueryString(),
             'categories' => Category::all(),
             'search' => $request->search,
         ]);
