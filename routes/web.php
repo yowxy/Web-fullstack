@@ -50,9 +50,6 @@ Route::namespace('App\Http\Controllers\Auth')->group(function(){
 
 
 
-Route::get('discussions/lorem', function () {
-    return view('pages.discussions.show');
-})-> name('discussions.show');
 
 
 
