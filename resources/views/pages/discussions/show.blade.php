@@ -17,12 +17,15 @@
                 <div class="col-12 col-lg-8 mb-5 mb-lg-0">
                     <div class="card card-discussions  mb-5 w-100  ">
                         <div class="row">
+
                             <div class="col-1 d-flex flex-column justify-content-start align-items-center">
-                                <a href="#">
-                                    <img src="{{ url('assets/images/image 10.png') }}" alt="Like " class="like-icon mb-1" >
+                                <a id="discussion-like" href="javascript:;" data-liked="{{ $discussion->liked() }}">
+                                    <img src="{{ $discussion->liked() ? $likedImage : $notLikedImage }}"
+                                        alt="Like" id="discussion-like-icon" class="like-icon mb-1">
                                 </a>
-                                <span class="fs-4 color-gray  mb-2" >12</span>
+                                <span id="discussion-liked-count"  class="fs-4 color-gray  mb-2" >{{ $discussion->LikeCount }}</span>
                             </div>
+
                             <div class="col-11" >
                                     <p>
                                         {!!  $discussion->content !!}
@@ -133,10 +136,7 @@
                     Please   <a href="{{ route('auth.login.show') }}" class="text-primary text-decoration-none" >singn in</a> or
                       <a href="{{ route('auth.sign-up.show') }}" class="text-primary text-decoration-none " >create an account</a> to participate in this discussion.
                 </div>
-
                     <div>
-
-
                 </div>
 
             </div>
@@ -176,7 +176,46 @@
             var alertContainer = alert.find('.container');
 
             alertContainer.first().text('Link to this discussion copied successfully');
-        })
+        });
+
+        $('#discussion-like').click(function() {
+            // dapatkan data apakah discussion ini sudah pernah dilike oleh user
+            // tentukan route like ajax, berdasarkan dengan apakah ini sudah dilike atau belum
+            // lakukan proses ajax
+            // jika ajax berhasil maka dapatkan status jsonnya
+            // jika statusnya success maka isi counter like dengan data counter like dari jsonnya
+            // lalu kita ganti icon likenya berdasarkan dengan nilai variabel point 1
+            // jika user sebelumnya sudah me-like, maka ganti icon jadi notLikedImage
+            // jika user sebelumnya belum me-like, maka ganti icon jadi likedImage
+
+            var isLiked = $(this).data('liked');
+            var likeRoute = isLiked ? '{{ route("discussions.like.unlike", $discussion->slug) }}'
+            : '{{ route("discussions.like.like", $discussion->slug) }}';
+
+            $.ajax({
+                method: 'POST',
+                url: likeRoute,
+                data: {
+                    '_token': '{{ csrf_token() }}'
+                }
+            })
+
+
+            .done(function(res) {
+                if (res.status === 'success') {
+                    $('#discussion-like-count').text(res.data.likeCount);
+
+                    if (isLiked) {
+                        $('#discussion-like-icon').attr('src', '{{ $notLikedImage }}');
+                    }
+                    else {
+                        $('#discussion-like-icon').attr('src', '{{ $LikedImage }}');
+                    }
+
+                    $('#discussion-like').data('liked', !isLiked);
+                }
+            })
+        });
     })
 </script>
 @endsection
