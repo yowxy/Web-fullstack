@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Discussion\StoreRequest;
+use App\Http\Requests\Discussion\UpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Discussion;
@@ -114,17 +115,71 @@ class DiscussionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $discussion = Discussion::with('category')->where('slug',$slug)->first();
+
+        if(!$discussion){
+            return   abort(404);
+        }
+
+        //variabel mengecek apakah ini milik milik si user
+
+        $isOwnedByUser = $discussion->user_id == auth()->id();
+
+        if(!$discussion){
+            return abort(404);
+        }
+
+        return response()->view('pages.discussions.form',[
+            'discussion' => $discussion,
+            'categories' => Category::all(),
+        ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $slug)
     {
-        //
+
+        $discussion = Discussion::with('category')->where('slug',$slug)->first();
+
+        if(!$discussion){
+            return   abort(404);
+        }
+
+        //variabel mengecek apakah ini milik milik si user
+
+        $isOwnedByUser = $discussion->user_id == auth()->id();
+
+        if(!$discussion){
+            return abort(404);
+        }
+
+        $validated = $request->validated();
+        $categoryid = Category::where('slug', $validated['category_slug'])->first()->id;
+
+        $validated['category_id'] = $categoryid;
+        $validated['user_id'] = auth()->id();
+
+
+        $stripContent = strip_tags($validated['content']);
+        $isContentLong = strlen($stripContent) > 120;
+        $validated ['content_preview'] = $isContentLong
+           ? (substr($stripContent,0, 120). '...'  ):$stripContent;
+
+        $update = $discussion->update($validated);
+
+        if($update){
+            session()->flash('notif.success', 'Discussion updaed successfully!');
+            return redirect()->route('discussions.show', $slug);
+        }
+
+        return abort(500);
+
+
     }
 
     /**
