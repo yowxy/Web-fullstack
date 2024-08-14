@@ -153,10 +153,27 @@
                     </div>
                 </div>
 
-                <div class="fw-bold text-center" >
-                    Please   <a href="{{ route('auth.login.show') }}" class="text-primary text-decoration-none" >singn in</a> or
-                      <a href="{{ route('auth.sign-up.show') }}" class="text-primary text-decoration-none " >create an account</a> to participate in this discussion.
-                </div>
+                @auth
+                    <h3 class="mb-5" >Your Answer</h3>
+                    <div class="card card-discussions">
+                        <form action="{{ route('discussions.answer.store', $discussion->slug) }}" method="POST" >
+                            @csrf
+                            <div class="mb-3" >
+                                <textarea name="answer" id="answer">{{ old('answer') }}</textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn-primary me-4 " >Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                @endauth
+
+                @guest
+                    <div class="fw-bold text-center" >
+                        Please   <a href="{{ route('auth.login.show') }}" class="text-primary text-decoration-none" >singn in</a> or
+                        <a href="{{ route('auth.sign-up.show') }}" class="text-primary text-decoration-none " >create an account</a> to participate in this discussion.
+                    </div>
+                @endguest
                     <div>
                 </div>
 
@@ -198,6 +215,22 @@
 
             alertContainer.first().text('Link to this discussion copied successfully');
         });
+
+        $('#answer').summernote({
+            placeholder: 'write your solution here',
+            tabSize: 2,
+            height: 220,
+            toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link']],
+                    ['view', ['codeview', 'help']],
+                ]
+            });
+            $('span.note-icon-caret').remove();
 
         $('#discussion-like').click(function() {
             // dapatkan data apakah discussion ini sudah pernah dilike oleh user
