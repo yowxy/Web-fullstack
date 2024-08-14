@@ -19,15 +19,16 @@ Route::middleware('auth')->group(function () {
     // Route group with namespace for resource controller
     Route::namespace('App\Http\Controllers')->group(function() {
         Route::resource('discussions', DiscussionController::class)
-            ->only(['create', 'store', 'edit', 'update', 'destroy']);
+        ->only(['create', 'store', 'edit', 'update', 'destroy']);
+        // Additional routes for liking and unliking discussions
+        Route::post('discussions/{discussion}/like', 'LikeController@discussionLike')
+            ->name('discussions.like.like');
+
+        Route::post('discussions/{discussion}/unlike', 'LikeController@discussionUnlike')
+            ->name('discussions.like.unlike');
     });
 
-    // Additional routes for liking and unliking discussions
-    Route::post('discussions/{discussion}/like', 'LikeController@discussionLike')
-        ->name('discussions.like.like');
 
-    Route::post('discussions/{discussion}/unlike', 'LikeController@discussionUnlike')
-        ->name('discussions.like.unlike');
 });
 
 

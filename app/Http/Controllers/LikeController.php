@@ -7,42 +7,43 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
-    public function discussionLike(string   $discussionSlug){
+    public function discussionLike(string $discussionSlug)
+    {
         // get discussion berdasarkan slug dari parameter
         // like discussion dengan model tadi
         // return json
         // isi jsonnya adalah likeCount / total semua like dari discussion tsb
 
-        $discusssion = Discussion::where('slug',$discussionSlug)->first();
+        $discussion = Discussion::where('slug', $discussionSlug)->first();
 
-        $discusssion->like();
+        $discussion->like();
 
         return response()->json([
             'status' => 'success',
             'data' => [
-                'likeCount' => $discusssion->likeCount,
+                'likeCount' => $discussion->likeCount,
             ],
         ]);
-
     }
 
-    public function discussionUnlike(string $discussionSlug){
+    public function discussionUnlike(string $discussionSlug)
+    {
         // get discussion berdasarkan slug dari parameter
-        // like discussion dengan model tadi
+        // unlike discussion dengan model tadi
         // return json
         // isi jsonnya adalah likeCount / total semua like dari discussion tsb
 
+        $discussion = Discussion::where('slug', $discussionSlug)->first();
 
-        $discusssion = Discussion::where('slug',$discussionSlug)->first();
-
-        $discusssion->unlike();
+        $discussion->unlike();
 
         return response()->json([
             'status' => 'success',
             'data' => [
-                'likeCount' => $discusssion->likeCount,
+                'likeCount' => $discussion->likeCount,
             ],
         ]);
-
     }
+
+
 }

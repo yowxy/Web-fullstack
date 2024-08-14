@@ -100,12 +100,13 @@ class DiscussionController extends Controller
         }
 
         $notlikedImage = url('assets/images/image 10.png');
-        $likedImage = url('assets/images/liked.png');
+
+        $LikedImage = url('assets/images/liked.png');
 
         return response()->view("pages.discussions.show",[
             'discussion' => $discussion,
             'categories' => Category::all(),
-            'LikedImage' => $likedImage,
+            'LikedImage' => $LikedImage,
             'notLikedImage' => $notlikedImage,
         ]);
     }

@@ -20,10 +20,10 @@
 
                             <div class="col-1 d-flex flex-column justify-content-start align-items-center">
                                 <a id="discussion-like" href="javascript:;" data-liked="{{ $discussion->liked() }}">
-                                    <img src="{{ $discussion->liked() ? $likedImage : $notLikedImage }}"
+                                    <img src="{{ $discussion->liked() ? $LikedImage : $notLikedImage }}"
                                         alt="Like" id="discussion-like-icon" class="like-icon mb-1">
                                 </a>
-                                <span id="discussion-liked-count"  class="fs-4 color-gray  mb-2" >{{ $discussion->LikeCount }}</span>
+                                <span id="discussion-like-count"  class="fs-4 color-gray  mb-2" >{{ $discussion->likeCount }}</span>
                             </div>
 
                             <div class="col-11" >
