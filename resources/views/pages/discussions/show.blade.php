@@ -84,9 +84,14 @@
                         </div>
                     </div>
 
-                    <h3 class="mb-3 fw-bold ">2 Answers</h3>
+                    @php
+                        $answerCount =  $discussion->answers->count();
+                    @endphp
+
+                    <h3 class="mb-3 fw-bold ">{{ $answerCount .' ' . Str::plural('Answer',$answerCount ) }}</h3>
                     <div class="mb-5">
-                        <div class="card card-discussions mb-3 ">
+                        @forelse ($discussionAnswers as $answer)
+                        <div class="card card-discussions mb-3 w-100 ">
                             <div class="row">
                                 <div class="col-1 d-flex flex-column justify-content-start align-items-center">
                                     <a href="#">
@@ -96,20 +101,22 @@
                                 </div>
                                 <div class="col-11">
                                     <p>
-                                        lorem ipsum dolor sit amet contecstur lorem ipsum dolor sit amet contecsturlorem ipsum dolor sit amet contecsturlorem ipsum dolor sit amet contecstur
+                                        {!! $answer->answer!!}
                                     </p>
                                     <div class="row align-items-end justify-content-end">
                                         <div class="col-5  col-lg-3 d-flex ">
                                             <a href="#" class="card-discussions-show-avatar-wrapper flex-shrink-0 rounded-circle overflow-hidden me-2 ">
-                                                <img src="{{ url('assets/images/profile.png') }}" alt="" class=""avatar >
+                                                <img src="{{ filter_var($answer->user->picture, FILTER_VALIDATE_URL)
+                                               ? $answer->user->picture : Storage::url($answer->user->picture) }}" alt="{{ $answer->user->username }}" class="avatar">
                                             </a>
                                             <div class="lh-1 fs-12px " >
-                                                <span class="text-black" >
+                                                <span class="{{ $answer->user->username === $discussion->user->username
+                                                  ? 'text-primary' : ' '  }}" >
                                                     <a href="#" class="fw-bold  d-flex align-items-start text-break  mb-1" >
-                                                        iklil najmi hamzah
+                                                        {{ $answer->user->username }}
                                                     </a>
                                                 </span>
-                                                <span class="color-gray" >7 hours ago</span>
+                                                <span class="color-gray" >{{ $answer->created_at->diffForHumans()  }}</span>
                                             </div>
                                     </div>
                                     </div>
@@ -117,40 +124,15 @@
                             </div>
                         </div>
 
-
-
-
-
-                        <div class="card card-discussions ">
-                            <div class="row">
-                                <div class="col-1 d-flex flex-column justify-content-start align-items-center">
-                                    <a href="#">
-                                        <img src="{{ url('assets/images/image 10.png') }}" alt="like"  class="like-icon mb-1">
-                                    </a>
-                                    <span class="fs-4 mb-2 color-gray mb-1 ">12</span>
-                                </div>
-                                <div class="col-11">
-                                    <p>
-                                        lorem ipsum dolor sit amet contecstur lorem ipsum dolor sit amet contecsturlorem ipsum dolor sit amet contecsturlorem ipsum dolor sit amet contecstur
-                                    </p>
-                                    <div class="row align-items-end justify-content-end">
-                                        <div class="col-5  col-lg-3 d-flex ">
-                                            <a href="#" class="card-discussions-show-avatar-wrapper flex-shrink-0 rounded-circle overflow-hidden me-2 ">
-                                                <img src="{{ url('assets/images/profile.png') }}" alt="" class=""avatar >
-                                            </a>
-                                            <div class="lh-1 fs-12px " >
-                                                <span class="text-black" >
-                                                    <a href="#" class="fw-bold  d-flex align-items-start text-break  mb-1" >
-                                                        iklil najmi hamzah
-                                                    </a>
-                                                </span>
-                                                <span class="color-gray" >7 hours ago</span>
-                                            </div>
-                                    </div>
-                                    </div>
-                                </div>
+                        @empty
+                            <div class="card card-discussion w-100  mb-3" >
+                                <h3>Curently no answer here</h3>
                             </div>
-                    </div>
+                        @endforelse
+
+                        {{-- generate pagination --}}
+                        {{ $discussionAnswers->links() }}
+
                 </div>
 
                 @auth
