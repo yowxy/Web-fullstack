@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Conner\Likeable\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Answer extends Model
 {
     use HasFactory;
+    use HasFactory,Likeable ;
     protected $fillable = [
         'user_id',
         'discussion_id',
