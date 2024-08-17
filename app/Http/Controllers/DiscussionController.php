@@ -135,7 +135,7 @@ class DiscussionController extends Controller
 
         $isOwnedByUser = $discussion->user_id == auth()->id();
 
-        if(!$discussion){
+        if(!$isOwnedByUser){
             return abort(404);
         }
 

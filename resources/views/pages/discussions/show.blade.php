@@ -92,6 +92,7 @@
                     <div class="mb-5">
                         @forelse ($discussionAnswers as $answer)
                         <div class="card card-discussions mb-3 w-100 ">
+
                             <div class="row">
                                 <div class="col-1 d-flex flex-column justify-content-start align-items-center">
                                     <a href="javascript:;" data-id="{{ $answer->id }}"
@@ -101,11 +102,20 @@
                                         <span class="answer-like-count  fs-4 mb-2 color-gray mb-1 ">{{ $answer->likeCount }}</span>
                                     </a>
                                 </div>
-                                <div class="col-11">
+                                <div class="col-11">    
                                     <div>
                                         {!! $answer->answer!!}
                                     </div>
                                     <div class="row align-items-end justify-content-end">
+                                        <div class="col">
+                                            @if ($answer->user_id === auth()->id())
+                                                <span class=" color-gray me-2 " >
+                                                    <a href="{{ route('answers.edit', $answer->id ) }}">
+                                                        <small>Edit</small>
+                                                    </a>
+                                                </span>
+                                            @endif
+                                        </div>
                                         <div class="col-5  col-lg-3 d-flex ">
                                             <a href="#" class="card-discussions-show-avatar-wrapper flex-shrink-0 rounded-circle overflow-hidden me-2 ">
                                                 <img src="{{ filter_var($answer->user->picture, FILTER_VALIDATE_URL)
