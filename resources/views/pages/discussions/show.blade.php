@@ -102,7 +102,7 @@
                                         <span class="answer-like-count  fs-4 mb-2 color-gray mb-1 ">{{ $answer->likeCount }}</span>
                                     </a>
                                 </div>
-                                <div class="col-11">    
+                                <div class="col-11">
                                     <div>
                                         {!! $answer->answer!!}
                                     </div>
@@ -114,6 +114,15 @@
                                                         <small>Edit</small>
                                                     </a>
                                                 </span>
+                                                <form action="{{ route('answers.destroy', $answer->id) }}"  class="d-inline-block lh-1" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="delete-answer color-gray text-decoration-none  btn btn-link p-0 lh-1 " >
+                                                        <small>Delete</small>
+                                                    </button>
+                                                </form>
+
                                             @endif
                                         </div>
                                         <div class="col-5  col-lg-3 d-flex ">
@@ -268,6 +277,12 @@
 
         $('#delete-discussion').click(function(event) {
             if (!confirm('Delete this discussion?')) {
+                event.preventDefault();
+            }
+        });
+
+        $('.delete-answer').click(function(event) {
+            if (!confirm('Delete this answer ?')) {
                 event.preventDefault();
             }
         });
