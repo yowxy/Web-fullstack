@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\My\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,11 @@ Route::namespace('App\Http\Controllers')->group(function() {
 });
 
 
+Route::namespace('App\Http\Controllers\My')->group(function() {
+    Route::resource('users',UserController::class)->only(['show']);
+});
+
+
 Route::get('/', function () {
     return view('home');
 })-> name('home');
@@ -66,9 +72,7 @@ Route::namespace('App\Http\Controllers\Auth')->group(function(){
 
 
 
-Route::get('users/iklil', function () {
-    return view('pages.users.show');
-})-> name('users.show');
+
 
 Route::get('users/iklil/edit', function () {
     return view('pages.users.form');
