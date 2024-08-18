@@ -21,6 +21,11 @@
                     <div>
                         <input type="text" id="current-url" class="d-none" value="{{ request()->url() }}">
                         <a id="share-profile" class=" btn-primary me-4" href="javascript:;">Share</a>
+                        @auth
+                            @if ($user->id === auth()->id())
+                                <a href="{{ route('users.edit', $user->username) }}" class="text-decoration-none  btn-primary" >Edit Profile</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
                 <div class="col-12 col-lg-8">
@@ -132,7 +137,7 @@
 
             var alertContainer = alert.find('.container');
 
-            alertContainer.first().text('Link to this discussion copied successfully');
+            alertContainer.first().text('Link to this Profile copied successfully');
         })
     })
 </script>
