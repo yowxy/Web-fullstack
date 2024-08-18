@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('users',UserController::class)->only(['edit','update']);
     });
 
-    
+
     Route::namespace('App\Http\Controllers')->group(function() {
         Route::resource('discussions', DiscussionController::class)
         ->only(['create', 'store', 'edit', 'update', 'destroy']);
@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
 
 
 Route::namespace('App\Http\Controllers')->group(function() {
+
+    Route::get('/','HomeController@index')->name('home');
     Route::resource('discussions', DiscussionController::class)->only(['index', 'show']);
 
     Route::get('discussions/categories/{category}', 'CategoryController@show')
@@ -59,9 +61,6 @@ Route::namespace('App\Http\Controllers\My')->group(function() {
 });
 
 
-Route::get('/', function () {
-    return view('home');
-})-> name('home');
 
 
 // pake  \\ ya bukan pake // kalo mau pke Controllers

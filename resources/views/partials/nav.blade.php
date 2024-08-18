@@ -15,7 +15,7 @@
             <a class="nav-link    {{ Route::currentRouteName() === 'discussions.index' ? 'active' : '' }}     " href="{{ route('discussions.index') }}">Discussions</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-nowrap " href="#">About us</a>
+            <a class="nav-link text-nowrap " href="{{ route('home') }}#about-us">About us</a>
         </li>
         </ul>
 
